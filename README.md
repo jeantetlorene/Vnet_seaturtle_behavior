@@ -5,6 +5,7 @@ This github directory aims to provide the functions used in the article "Fully C
 The functions proposed in this github are thus easily reusable and applicable to another context.
 
 Link to the article : https://www.sciencedirect.com/science/article/abs/pii/S0304380021001253
+
 keywords : Deep learning, Accelerometer, Sea turtle, Ecology, Behavioural classification, Convolutional neural network
 
 # Authors 
