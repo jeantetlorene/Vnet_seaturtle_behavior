@@ -10,7 +10,7 @@ from tensorflow.keras.utils import to_categorical
 
 class Global_generator:
 
-    def __init__(self, names, Behaviors, window_size, matrices,labels, descriptor_select):
+    def __init__(self, names, Behaviors, window_size, matrices, labels, descriptor_select):
 
         self.names=names
         self.window_size=window_size
@@ -64,13 +64,13 @@ class Global_generator:
         dens/=sum_dens
 
         # creating a mask. 
-        kernel = np.ones(int(1.5*self.window_size))#avant cela dépendait de N
+        kernel = np.ones(int(1.5*self.window_size))
         kernel/=np.sum(kernel)
         #gauss = np.exp(-t**2)
         #gauss /= np.sum(gauss)
 
         # convolving label with a mask
-        dens_conv = np.convolve(dens, kernel, mode='same')#+min_dens
+        dens_conv = np.convolve(dens, kernel, mode='same')
     
         dens_conv[-self.window_size//2-2:]=0
         dens_conv[:self.window_size//2+2]=0

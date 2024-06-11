@@ -15,11 +15,10 @@ import json
 
 class classCLASS:
 
-    def __init__(self,id,name,behaviors,score_weight,sampling_weight=1,loss_weight=1):
+    def __init__(self,id,name,behaviors,sampling_weight=1,loss_weight=1):
         self.id=id
         self.name=name
         self.behaviors=behaviors
-        self.score_weight=score_weight
         self.sampling_weight=sampling_weight
         self.loss_weight=loss_weight
 

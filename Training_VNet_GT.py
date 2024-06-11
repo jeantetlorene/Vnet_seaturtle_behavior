@@ -12,6 +12,7 @@ import datetime
 import keras
 import tensorflow as tf
 import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
 
 
 from Vnet_architecture_GT import *
@@ -26,7 +27,7 @@ memo=pd.Series()
 
 ### I-Parameters
 #Folders to load the preprocessed dataset and to save the model and its predictions
-folder_out="c:/Users/loren/Documents/Articles/github/Vnet_seaturtle_behavior"
+folder_out="c:/Users/loren/Documents/Articles/github/Out_model/"
 folder_in=memo['dir_in']="c:/Users/loren/Documents/Articles/github/Data_GT_preprocessed"
 
 
@@ -67,14 +68,14 @@ NAMES_TEST=memo["NAMES_VAL"]=[
 NAMES_ALL=NAMES_TRAIN+NAMES_VAL+NAMES_TEST
 
 
-#the Behavioral categories defined by classCLASS : id ,name of behavior ,behaviors number in the data csv, score_weight to calculate accuracy,sampling_weight=1,loss_weight=1
-Other=classCLASS(0,"Other",None,0,1,0.1)
+#the Behavioral categories defined by classCLASS : id ,name of behavior ,behaviors number in the data csv, sampling_weight=1,loss_weight=1
+Other=classCLASS(0,"Other",None,1,0.1)
 Breathing=classCLASS(1,"Breathing",[1,2,40],1)
-Feeding=classCLASS(2,"Feeding",[3,4,5,6,7,11,12,13,18,19,20,21],10,2,2)
-Gliding=classCLASS(3,"Gliding",[16,17],1,3)
-Resting=classCLASS(4,"Resting",[29,30,31,32],1,0.5)
-Scratching=classCLASS(5,"Scratching",[34,35,36],2,2,2)
-Swimming=classCLASS(6,"Swimming",[42,45,48,43,46,49,27,44,47,50,56,52,54,55],1,0.5)
+Feeding=classCLASS(2,"Feeding",[3,4,5,6,7,11,12,13,18,19,20,21],2,2)
+Gliding=classCLASS(3,"Gliding",[16,17],3)
+Resting=classCLASS(4,"Resting",[29,30,31,32],0.5)
+Scratching=classCLASS(5,"Scratching",[34,35,36],2,2)
+Swimming=classCLASS(6,"Swimming",[42,45,48,43,46,49,27,44,47,50,56,52,54,55],0.5)
 
 Behaviors=[Other,Breathing,Feeding,Gliding,Resting,Scratching,Swimming]
 
@@ -83,16 +84,13 @@ for CLASS in Behaviors:
     memo["CLASSES_"+CLASS.name]=CLASS.__dict__
 
 
-descriptor_select=memo['descriptor_select']=[0,1,2,3,4,5,23] #the variables that are going to be used to train the Vnet
+descriptor_select=memo['descriptor_select']=[0,1,2,3,4,5,17] #the variables that are going to be used to train the Vnet
 label_column=7 #number of the column containing the labels
 WINDOW_DURA=40 #size of the window in seconds
 RESAMPLING_STEP_S=0.0500 #freq of the csv files
 window_size=int(WINDOW_DURA/RESAMPLING_STEP_S) #size of the window and therefore input
 freq=20 #frequency
 
-
-for CLASS in Behaviors:
-    memo["CLASSES_"+CLASS.name]=CLASS.__dict__
 
 #model parameters
 nb_outputs=len(Behaviors)
@@ -188,6 +186,27 @@ class_names=[CLASS.name for CLASS in Behaviors]
     
 predict.plot_confusion_matrix(test_true,test_pred, np.array(class_names),True,"Confusion matrix on testing dataset")
 
+cm = confusion_matrix(test_true, test_pred)
 
+print(cm)
+TP=np.diag(cm)
+FP=np.sum(cm,axis=1)-TP
+FN=np.sum(cm,axis=0)-TP
+TN=np.ones(len(class_names))*np.sum(cm)-TP-FP-FN
+
+Accuracy=(TP+TN)/(TP+TN+FP+FN)
+Recall=TP/(TP+FN)
+Precision =TP/(TP+FP)
+Specificity =TN/(TN+FP)
+F1_score=2*(Recall*Precision)/ (Recall+Precision)
+
+df = pd.DataFrame({'Accuracy': Accuracy, 'Recall': Recall, 'Precision': Precision, 'Specificity': Specificity, 'F1_score': F1_score },
+                      index = class_names)
+print(df)
+
+Global_accuracy=(np.sum(TP)+np.sum(TN))/(np.sum(TP)+np.sum(TN)+np.sum(FP)+np.sum(FN))
+print("Global Accuracy :", Global_accuracy)
+F1_score=np.mean(df['F1_score'][~np.isnan(df['F1_score'])])
+print("F1-score :", F1_score)
 
 
