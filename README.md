@@ -30,7 +30,15 @@ Comparaison of the predictions of the V-Net (in red) and the observed behaviors 
 
 
 Confusion Matrix on the testing dataset (3 individuals) : 
-![448929907_8767867806573383_1147487749947737280_n](https://github.com/jeantetlorene/Vnet_seaturtle_behavior/assets/105348746/76292e7a-4621-4e43-9373-67e86315f532)
+![whole validation](https://github.com/jeantetlorene/Vnet_seaturtle_behavior/assets/105348746/a9407897-1e50-4430-96d4-419e5fd269e7)
+
+# References 
+Jeantet, L., Planas-Bielsa, V., Benhamou, S., Geiger, S., Martin, J., Siegwalt, F., Lelong, P.,Gresser, J., Etienne, D., Hi´elard, G., Arque, A., Regis, S., Lecerf, N., Frouin, C.,Benhalilou, A., Murgale, C., Maillet, T., Andreani, L., Campistron, G., Delvaux, H.,Guyon, C., Richard, S., Lefebvre, F., Aubert, N., Habold, C., le Maho, Y.,Chevallier, D., 2020a. Behavioural inference from signal processing using animalborne multi-sensor loggers: a novel solution to extend the knowledge of sea turtle ecology. R. Soc. Open Sci. 7, 200139 https://doi.org/10.1098/rsos.200139. \\
+
+Milletari, F., Navab, N., Ahmadi, S.A., 2016. V-Net: fully convolutional neural networks for volumetric medical image segmentation. In: Proc. - 2016 4th Int. Conf. 3D Vision, 3DV 2016, pp. 565–571. https://oi.org/10.1109/3DV.2016.79. \\
+
+Ronneberger, O., Fischer, P., Brox, T., 2015. U-net: convolutional networks for biomedical image segmentation. Lecture Notes in Computer Science (Including Subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics. Springer Verlag, pp. 234–241. https://doi.org/10.1007/978-3-319-24574-4_28 
+
 
 
 # Library 
