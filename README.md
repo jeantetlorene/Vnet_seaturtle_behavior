@@ -2,7 +2,7 @@
 
 This github directory aims to provide the functions used in the article "Fully Convolutional Neural Network: A solution to infer animal behaviours from multi-sensor data" to automatically identify sea turtle behaviours from accelerometers.  The data used in this article was collected by Damien Chevallier (CNRS France) and is available within the Dryad Digital Repository: https://doi.org/10.5061/dryad.hhmgqnkd9
 
-The functions proposed in this github are thus easily reusable and applicable to another context.
+The functions proposed in this github are easily reusable and applicable to another context.
 
 Link to the article : https://www.sciencedirect.com/science/article/abs/pii/S0304380021001253
 
