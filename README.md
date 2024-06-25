@@ -2,12 +2,13 @@
 
 This github directory aims to provide the functions used in the article "Fully Convolutional Neural Network: A solution to infer animal behaviours from multi-sensor data" to automatically identify sea turtle behaviors from accelerometers. The data used in this article was collected by Damien Chevallier (CNRS France) and is available in Zenodo: https://zenodo.org/records/11643602
 
-The functions proposed in this github are easily reusable and applicable to another context. 
-The scripts are organized into Python files, with Training_VNet_GT serving as the main file to run. It utilizes functions from the other Python files: Global_generator_GT, Prediction_GT, Training_helper_GT, and Vnet_Architecture_GT. The notebook Notebook=Training_the_Vnet_Green_Turtles can be run independently and contains all the necessary functions to operate on its own.
-
 Link to the article : https://www.sciencedirect.com/science/article/abs/pii/S0304380021001253
 
 keywords : Deep learning, Accelerometer, Sea turtle, Ecology, Behavioural classification, Convolutional neural network
+
+The functions proposed in this github are easily reusable and applicable to another context. 
+The scripts are organized into Python files, with Training_VNet_GT serving as the main file to run. It utilizes functions from the other Python files: Global_generator_GT, Prediction_GT, Training_helper_GT, and Vnet_Architecture_GT. The notebook Notebook=Training_the_Vnet_Green_Turtles can be run independently and contains all the necessary functions to operate on its own.
+
 
 # Authors 
 Lorène Jeantet [1], Vincent Vigon [2], Sébastien Geiger [1], Damien Chevallier [1,3] 
